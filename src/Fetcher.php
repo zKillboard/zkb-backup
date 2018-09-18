@@ -31,6 +31,7 @@ class Fetcher
 		$p = $db->prepare("insert or ignore into killmails values (:k, :b)");
 		$p->bindValue(":k", $kill_id);
 		$p->bindValue(":b", $content);
+		$p->execute();
 		$p->close();
 		$db->close();
 		$params['sql']->exec("update killhashes set processed = 1 where kill_id = $kill_id");

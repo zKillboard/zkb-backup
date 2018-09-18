@@ -1,0 +1,10 @@
+{
+	"require": {
+		"cvweiss/guzzler": "^0.0.9"
+	},
+	"autoload": {
+		"psr-4": {
+			"": "src/"
+		}
+	}
+}

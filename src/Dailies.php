@@ -2,10 +2,11 @@
 
 class Dailies
 {
+	public static $lastTime = 0;
 
 	public static function fetch($guzzler, $sql)
 	{
-		$time = strtotime("2007-12-05");
+		$time = max(self::$lastTime, strtotime("2007-12-05"));
 		$today = date('Ymd');
 		while ($time < time()) {
 			$date = date("Ymd", $time);
@@ -22,6 +23,7 @@ class Dailies
 			$p->close();
 			$url = "https://zkillboard.com/api/history/$date/";
 			$guzzler->call($url, "Dailies::success", "Dailies::fail", ['sql' => $sql, 'date' => $date]);
+			self::$lastTime = $time;
 			return;
 		}
 	}

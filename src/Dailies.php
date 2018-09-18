@@ -39,7 +39,7 @@ class Dailies
 			$p->close();
 		}
 		$sql->exec("commit");
-		echo " Daily: " . $params['date'] . " " . sizeof($json) . "\n";
+		echo "  Daily: " . $params['date'] . " " . sizeof($json) . "\n";
 	}
 
 	public static function fail($guzzler, $params, $ex)
